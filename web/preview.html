@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 10 - Android Build Target Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F19;
+      --surface: #111827;
+      --card: #1F2937;
+      --green: #3DDC84;
+      --text: #F9FAFB;
+      --muted: #9CA3AF;
+      --border: #374151;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+    }
+    .header {
+      max-width: 1000px;
+      margin: 0 auto 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 { font-size: 1.5rem; font-weight: 700; color: var(--green); }
+    .header p { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+    .nav-btn {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .panel-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .badge {
+      background: rgba(61, 220, 132, 0.2);
+      color: var(--green);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    pre {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      background: #000;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      color: #A7F3D0;
+    }
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .step-item {
+      background: var(--card);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--green);
+      font-size: 0.9rem;
+    }
+    .step-item strong { color: var(--green); display: block; margin-bottom: 0.2rem; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h1>Experiment 10 Architecture &amp; Commands</h1>
+      <p>Configuring &amp; Building a Flutter application for Android target.</p>
+    </div>
+    <a href="index.html" class="nav-btn">← Back to App UI</a>
+  </div>
+
+  <div class="container">
+    <div class="panel">
+      <div class="panel-title">
+        <span>Experiment Steps</span>
+        <span class="badge">Flutter Lab Exp 10</span>
+      </div>
+      <ul class="step-list">
+        <li class="step-item">
+          <strong>Step 1: Check Flutter</strong>
+          <code>flutter doctor</code>
+        </li>
+        <li class="step-item">
+          <strong>Step 2: Check Devices</strong>
+          <code>flutter devices</code>
+        </li>
+        <li class="step-item">
+          <strong>Step 3: Toolchain Licenses</strong>
+          <code>flutter doctor --android-licenses</code>
+        </li>
+        <li class="step-item">
+          <strong>Step 4: Create Application</strong>
+          <code>flutter create android_app</code> &amp; <code>cd android_app</code>
+        </li>
+        <li class="step-item">
+          <strong>Step 5-8: Run, Build &amp; Test APK</strong>
+          <code>flutter run</code> &amp; <code>flutter build apk</code>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Generated APK Paths &amp; Installation</span>
+        <span class="badge">APK Output</span>
+      </div>
+      <pre>
+# Generated APK Output Directory
+build/app/outputs/flutter-apk/app-release.apk
+build/app/outputs/flutter-apk/app-debug.apk
+
+# Install APK onto Connected Android Emulator or Device
+$ adb install build/app/outputs/flutter-apk/app-release.apk
+
+# Launch App directly
+$ flutter run -d android
+      </pre>
+    </div>
+  </div>
+</body>
+</html>
